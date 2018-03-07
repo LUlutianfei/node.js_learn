@@ -1,0 +1,4 @@
+客户端请求所用方法为：POST
+客户端请求所用url字符串为：/
+客户端请求头对象为：{"host":"localhost:1337","connection":"keep-alive","content-length":"39","cache-control":"max-age=0","origin":"null","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36","content-type":"application/x-www-form-urlencoded","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate, br","accept-language":"zh-CN,zh;q=0.8"}
+客户端请求所用http版本为：1.1

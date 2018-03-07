@@ -1,0 +1,276 @@
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>向HTTP服务器请求数据</title>
+</head>
+<body>
+<input type="button" value="获取数据" onclick="GetData()" />
+<div id="div" ></div>
+<script>
+  function GetData(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET","http://localhost:1337/",true);
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState ==4 ) {
+        if(xhr.status==200) {
+          document.getElementById('div').innerHTML = xhr.responseText;
+        }
+      }
+    }
+    xhr.send(1337);
+  }
+</script>
+</body>
+</html>
+ -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Node.js的data事件与end事件的回调函数测试用页面</title>
+</head>
+<body>
+<form id="form1" action="http://localhost:1337/" method="post" >
+   姓名：<input type="text" name="name" value="陆天飞"><br/>
+   年龄：<input type="number" name="age" value="19">
+   <input type="submit" value="提交" >
+</form>
+<p>服务器端代码见http.js文件</p>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>express post方法使用示例测试用页面</title>
+</head>
+<body>
+<form id="form1" action="index.html" method="post" >
+  姓：<input type="text" name="firstname" value="陆"><br/>
+  名：<input type="text" name="username" value="天飞"><br/>
+  <input type="submit" name="提交">
+</form>
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>express.js put方法使用示例</title>
+<script>
+  function submitData() {
+    var obj = {
+      firstname:document.getElementById('txtFirstName').value,
+      username:document.getElementById('txtUserName').value
+    };
+    var xhr = new XMLHttpRequest();
+    xhr.open('put','index',true);
+    xhr.onload = function(e) {
+      if(this.status == 200) {
+        document.getElementById('result').innerHTML = this.response;
+      }
+    }
+    xhr.send(JSON.stringify(obj));
+  }
+</script>
+</head>
+<body>
+<form id="form1">
+  姓：<input type="text" id="txtFirstName" name="firstname" value="l6"><br/>
+  名：<input type="text" id="txtUserName" name="username" value="tf"><br/>
+  <input type="button" value="提交" onclick="submitData();">
+</form>
+<output id="result" ></output>
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>express.js //static中间件的使用示例</title>
+  <script>
+    function submitData() {
+    var obj = {
+      firstname:document.getElementById('txtFirstName').value,
+      username:document.getElementById('txtUserName').value
+    };
+    var xhr = new XMLHttpRequest();
+    xhr.open('post','/',true);
+    xhr.onload = function(e) {
+      if(this.status == 200) {
+        document.getElementById('result').innerHTML = this.response;
+      }
+    }
+    xhr.send(JSON.stringify(obj));
+  }
+  </script>
+</head>
+<body>
+<form id="form1">
+  姓：<input type="text" id="txtFirstName" name="firstname" value="l61"><br/>
+  名：<input type="text" id="txtUserName" name="username" value="tf1"><br/>
+  <input type="button" value="提交" onclick="submitData();">
+</form>
+<output id="result" ></output>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>socketIo.js //创建Socket.Io服务器</title>
+  <meta charset="utf-8">
+  <script src="/socket.io/socket.io.js" ></script>
+  <script>
+    var socket = io.connect();
+    socket.on('message',function(data) {
+      console.log(data);
+      socket.send('消息已接收到');
+    })
+    socket.on('disconnect',function() {
+      console.log('服务器端断开连接');
+    })
+  </script>
+</head>
+<body>
+
+</body>
+</html> -->
+
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>socketIo.js //在服务器端与客户端之间相互发送事件</title>
+  <meta charset="utf-8">
+  <script src="/socket.io/socket.io.js" ></script>
+  <script>
+    var socket = io.connect();
+    socket.on('news',function(data) {
+      console.log(data.hello);
+      socket.emit('my other event',{my:'data'});
+    })
+  </script>
+</head>
+<body>
+
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>socketIo.js //在发送事件时指定回调函数</title>
+  <meta charset="utf-8">
+  <script src="/socket.io/socket.io.js" ></script>
+  <script>
+    var socket = io.connect();
+    socket.on('setName',function(name,fn) {
+      console.log(name);
+      fn('李四','王五');
+    })
+  </script>
+</head>
+<body>
+
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>socketIo.js //向所有客户端广播消息</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect();
+    socket.on('login',function(names) {
+      var str = '';
+      names.forEach(function(name) {
+        str+='用户'+name +'已登录。<br/>';
+      })
+      document.getElementById('result').innerHTML = str;
+    });
+    function add() {
+      socket.emit('login',document.getElementById('nickname').value);
+    }
+  </script>
+</head>
+<body>
+用户名：<input type="text" id="nickname">
+<input type="button" onclick="add()" value="登录"><br/>
+<output id="result" ></output>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>socketIo.js //命名空间的定义示例</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var chat = io.connect('http://localhost/chat');
+    var news = io.connect('http://localhost/news');
+    chat.on('connect',function() {
+      chat.send('你好');
+      chat.on('message',function(msg) {
+        console.log('从chat命名空间接收到消息:',msg);
+      });
+    });
+    news.on('connect',function() {
+      news.send('你好');
+      news.on('message',function(msg) {
+        console.log('从news命名空间接收到消息:',msg);
+      });
+    });
+  </script>
+</head>
+<body>
+
+</body>
+</html>
